@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Meals Explorer
 
-## Getting Started
+Meals Explorer adalah aplikasi frontend berbasis `Next.js` untuk menampilkan daftar ingredient, daftar meal berdasarkan ingredient, dan detail meal dari API [TheMealDB](https://www.themealdb.com/api.php).
 
-First, run the development server:
+Project ini dibuat dengan fokus pada:
+
+- UI modern dan responsive
+- struktur folder yang rapi dan mudah di-audit
+- penggunaan `shadcn/ui`, `@tanstack/react-query`, dan `axios`
+
+## Tech Stack
+
+- `Next.js 16`
+- `React 19`
+- `TypeScript`
+- `Tailwind CSS v4`
+- `shadcn/ui`
+- `@tanstack/react-query`
+- `axios`
+
+## Fitur
+
+- Halaman `Ingredients`
+- Search ingredient di sisi frontend
+- Filter chip ingredient type di sisi frontend
+- Pagination di halaman ingredient agar rendering tetap ringan
+- Halaman `Ingredients Detail` berdasarkan ingredient terpilih
+- Search meal di sisi frontend
+- Pagination di halaman meal agar tidak lag
+- Halaman `Meal Detail`
+- Embedded YouTube tutorial jika tersedia
+- Responsive untuk desktop, tablet, dan mobile
+
+## API Endpoint
+
+- List Ingredients:
+  `https://www.themealdb.com/api/json/v1/1/list.php?i=list`
+- Filter by Ingredient:
+  `https://www.themealdb.com/api/json/v1/1/filter.php?i={ingredient-name}`
+- Meal Detail:
+  `https://www.themealdb.com/api/json/v1/1/lookup.php?i={meal-id}`
+
+## Cara Menjalankan Project
+
+Pastikan environment sudah memiliki:
+
+- `Node.js 20+`
+- `npm 10+`
+
+Install dependency:
+
+```bash
+npm install
+```
+
+Jalankan development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Project akan berjalan di:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build Production
 
-## Learn More
+Untuk memastikan project siap dijalankan reviewer atau untuk audit:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run format
+npm run lint
+npm run build
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Jika ingin hanya menjalankan hasil production build:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+npm run start
+```
 
-## Deploy on Vercel
+## Langkah Audit Setelah Clone Repository
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Setelah clone repository, langkah minimum agar project bisa langsung diperiksa:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+git clone <repository-url>
+cd cmlabs-frontend-parttime-test
+npm install
+npm run dev
+```
+
+Langkah validasi tambahan:
+
+```bash
+npm run format
+npm run lint
+```
+
+## Struktur Project
+
+```bash
+src/
+  app/                    # App Router pages
+  components/
+    layout/               # Navbar, footer, shell, pagination
+    providers/            # Global providers
+    ui/                   # shadcn/ui components
+  features/
+    ingredients/          # Ingredient domain
+    meals/                # Meal domain
+  lib/                    # Utils, axios client, query client
+```
+
+## Catatan Implementasi
+
+- Semua warna mengikuti global CSS / design tokens project.
+- Data fetching menggunakan `axios` dan `@tanstack/react-query`.
+- Pagination dilakukan di frontend untuk mengurangi beban render list panjang.
+- Image remote dari `themealdb.com` sudah diizinkan melalui `next.config.ts`.
+
+## Deploy
+
+Project ini dirancang untuk mudah di-deploy ke `Vercel`.
+
+Dummy deployment link:
+
+- Vercel:
+  [https://meals-explorer-demo.vercel.app](https://meals-explorer-demo.vercel.app)
+
+Catatan:
+
+- Link di atas adalah placeholder/dummy link.
+- Nanti dapat diganti setelah deployment final dilakukan oleh pemilik project.
