@@ -127,12 +127,8 @@ src/
 
 Project ini dirancang untuk mudah di-deploy ke `Vercel`.
 
-Dummy deployment link:
+deployment link:
 
 - Vercel:
-  [https://meals-explorer-demo.vercel.app](https://meals-explorer-demo.vercel.app)
+  [https://culinary-architect.vercel.app/ingredients](https://culinary-architect.vercel.app/ingredients)
 
-Catatan:
-
-- Link di atas adalah placeholder/dummy link.
-- Nanti dapat diganti setelah deployment final dilakukan oleh pemilik project.
